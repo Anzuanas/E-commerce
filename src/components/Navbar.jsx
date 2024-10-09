@@ -10,10 +10,11 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+ 
   ${mobile({ padding: "10px 0px" })}
 `;
 
@@ -78,7 +79,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>MOCCA</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
