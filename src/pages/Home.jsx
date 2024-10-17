@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import Slider from '../components/Slider'
 import Categories from '../components/Categories'
-import Products from '../components/Products'
+import  Products  from "../components/Products";  // Assuming Products is a named export
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 

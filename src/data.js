@@ -27,16 +27,19 @@ export const sliderItems = [
       id: 1,
       img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "SHIRT STYLE!",
+      cat:"women"
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "LOUNGEWEAR LOVE",
+      cat:"jeans"
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       title: "LIGHT JACKETS",
+      cat:"coat"
     },
   ];
 
@@ -73,5 +76,9 @@ export const sliderItems = [
       id: 8,
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzop2mTpewh4WsmxLkscvnp0iuN8ynnyGkEePvl8JzSIbGIUAjBLGvnxgfzF8jYreQoTQ&usqp=CAU", // Woman in Evening Dress
     },
+    {
+      id:9,
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdSmXs0OI9nkT_U8w58broLhkU3vb_zVghgnKnixM8ZbtHQ7UeCh_SSRp17XTVpEMz8_c&usqp=CAU"
+    }
 ];
 
