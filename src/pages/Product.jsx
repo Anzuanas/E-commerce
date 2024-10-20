@@ -105,6 +105,7 @@ const Product = () => {
     const location= useLocation();
   const id =location.pathname.split("/")[2];
   const [product,setProduct]=useState({})
+  const [quantity,setQuantity]=useState(1)
 
   useEffect(() => {
     const getProduct= async () =>{
@@ -127,26 +128,23 @@ const Product = () => {
                     <Image src={product.img} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>Denim Jumpsuit</Title>
-                    <Desc> There are many variations of passages of Lorem Ipsum available, but
-                        the majority have suffered alteration in some form, by injected
-                        humour, or randomised words which don’t look even slightly believable.</Desc>
-                    <Price>20$</Price>
+                    <Title>{product.title}</Title>
+                    <Desc>{product.desc}</Desc>
+                    <Price>{product.price}</Price>
                     <FilterContainer>
                     <Filter>
                         <FilterTitle>Color</FilterTitle>
-                        <FilterColor color="black"/>
-                        <FilterColor color="darkblue"/>
-                        <FilterColor color="gray"/>
+                        {product.color?.map((c) => (
+                <FilterColor color={c} key={c} onClick={()=>setColor(c)} />
+              ))}
                     </Filter>
                     <Filter>
                         <FilterTitle>Size</FilterTitle>
                         <FilterSize>
-                            <FilterSizeOption>XS</FilterSizeOption>
-                            <FilterSizeOption>S</FilterSizeOption>
-                            <FilterSizeOption>M</FilterSizeOption>
-                            <FilterSizeOption>L</FilterSizeOption>
-                            <FilterSizeOption>XL</FilterSizeOption>
+                            
+                            {product.size?.map((s)=>(
+                                <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                            ))}
                             
                         </FilterSize>
                     </Filter>
@@ -154,7 +152,7 @@ const Product = () => {
                 <AddContainer>
                     <AmountContainer>
                         <Remove/>
-                        <Amount>1</Amount>
+                        <Amount>{quantity}</Amount>
                         <Add/>
                     </AmountContainer>
                     <Button>Add to cart</Button>
