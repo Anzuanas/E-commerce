@@ -4,6 +4,10 @@ import Newsletter from "../components/Newsletter"
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import { Add, Remove } from "@mui/icons-material"
+import { useLocation } from "react-router-dom"
+import { useEffect,useState } from "react"
+import axios from "axios"
+import { publicRequest } from "../requestMethods"
 
 
 
@@ -98,13 +102,29 @@ font-weight: 500;
 
 
 const Product = () => {
+    const location= useLocation();
+  const id =location.pathname.split("/")[2];
+  const [product,setProduct]=useState({})
+
+  useEffect(() => {
+    const getProduct= async () =>{
+        try{
+            const res=await publicRequest.get("/products/find/" + id)
+            setProduct(res.data)
+            console.log(product)
+        }catch{
+
+        }
+    };
+    getProduct()
+  } , [id])
     return (
         <Container>
             <Navbar />
             <Announcement />
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRWaZyJBz79CmqCVHjFOOPyb80hI0i6nFJry21I2fFVT2l5aCoB690Ug59DeCh5-5xlHxtrFGwV7Pm3yLz5iQlm7JmCHCh2uwbiBRGlV1Q" />
+                    <Image src={product.img} />
                 </ImgContainer>
                 <InfoContainer>
                     <Title>Denim Jumpsuit</Title>
