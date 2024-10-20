@@ -106,6 +106,8 @@ const Product = () => {
   const id =location.pathname.split("/")[2];
   const [product,setProduct]=useState({})
   const [quantity,setQuantity]=useState(1)
+  const [color,setColor]=useState("")
+  const [size,setSize]=useState("")
 
   useEffect(() => {
     const getProduct= async () =>{
@@ -118,7 +120,16 @@ const Product = () => {
         }
     };
     getProduct()
-  } , [id])
+  } , [id]);
+
+  const handleQuantity=(type) => {
+    if(type==="dec"){
+        quantity >1 &&
+        setQuantity(quantity-1)
+    }else{
+        setQuantity(quantity+1)
+    }
+  }
     return (
         <Container>
             <Navbar />
@@ -143,7 +154,7 @@ const Product = () => {
                         <FilterSize>
                             
                             {product.size?.map((s)=>(
-                                <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                                <FilterSizeOption key={s} onChange={(e)=> setSize(e.target.value)}>{s}</FilterSizeOption>
                             ))}
                             
                         </FilterSize>
@@ -151,11 +162,11 @@ const Product = () => {
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
-                        <Remove/>
+                        <Remove  onClick={()=>handleQuantity("dec")}/>
                         <Amount>{quantity}</Amount>
-                        <Add/>
+                        <Add onClick={()=>handleQuantity("inc")}/>
                     </AmountContainer>
-                    <Button>Add to cart</Button>
+                    <Button onClick={handleClick}>Add to cart</Button>
                 </AddContainer>
                 </InfoContainer>
                
