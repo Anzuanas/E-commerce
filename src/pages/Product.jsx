@@ -117,7 +117,7 @@ const Product = () => {
         try{
             const res=await publicRequest.get("/products/find/" + id)
             setProduct(res.data)
-            console.log(product)
+            
         }catch{
 
         }
@@ -137,9 +137,11 @@ const Product = () => {
     const handleClick = () => {
 
         dispatch(
-            addProduct({product,quantity})
+            addProduct({...product,quantity,color,size})
         )
+       
     }
+    
     return (
         <Container>
             <Navbar />
@@ -154,21 +156,24 @@ const Product = () => {
                     <Price>{product.price}</Price>
                     <FilterContainer>
                     <Filter>
-                        <FilterTitle>Color</FilterTitle>
-                        {product.color?.map((c) => (
-                <FilterColor color={c} key={c} onClick={()=>setColor(c)} />
-              ))}
-                    </Filter>
-                    <Filter>
-                        <FilterTitle>Size</FilterTitle>
-                        <FilterSize>
-                            
-                            {product.size?.map((s)=>(
-                                <FilterSizeOption key={s} onChange={(e)=> setSize(e.target.value)}>{s}</FilterSizeOption>
-                            ))}
-                            
-                        </FilterSize>
-                    </Filter>
+  <FilterTitle>Color</FilterTitle>
+  {product.color?.map((c) => (
+    <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+  ))}
+</Filter>
+
+<Filter>
+  <FilterTitle>Size</FilterTitle>
+  <FilterSize onChange={(e) => setSize(e.target.value)}>
+  {product.size?.map((s) => (
+    <FilterSizeOption key={s}>
+      {s}
+    </FilterSizeOption>
+  ))}
+</FilterSize>
+
+</Filter>
+
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
